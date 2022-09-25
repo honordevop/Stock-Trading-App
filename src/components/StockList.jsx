@@ -34,7 +34,8 @@ export const StockList = () => {
                 })*/
 
                 // Function to ensure all provided stock is fecthed through a single api call
-                const responses = (JSON.parse(localStorage.getItem('responses'))) || await Promise.all(watchList.map((list) => {
+                // const responses = (JSON.parse(localStorage.getItem('responses'))) || await Promise.all(watchList.map((list) => {
+                    const responses = await Promise.all(watchList.map((list) => {
                     return finnhub.get("/quote", {
                         params: {
                             symbol: list
@@ -65,8 +66,8 @@ export const StockList = () => {
         fetchData()
         return () => (isMounted = false)
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        
+    }, [watchList])
     return (
         // <div>helo</div>
         <div>
