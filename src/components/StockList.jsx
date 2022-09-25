@@ -8,7 +8,7 @@ export const StockList = () => {
 
     const [stock, setStock] = useState();
     // const [watchList, setWatchList] = useState(['GOOGL', 'MSFT', 'AMZN']); to be imported from context as show below 
-    const value = useContext(WatchListContext)
+    const { watchList } = useContext(WatchListContext)
 
     //Function to set Chg% to red or green based on it value
     const changeColor = (change) => {
