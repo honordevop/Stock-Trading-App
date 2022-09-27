@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import finnhub from "../apis/finnhub";
 import { BsCaretDownFill, BsCaretUpFill } from 'react-icons/bs';
 import { WatchListContext } from "../context/watchListContext";
+import { useNavigate } from "react-router-dom";
 
 
 export const StockList = () => {
@@ -9,6 +10,7 @@ export const StockList = () => {
     const [stock, setStock] = useState();
     // const [watchList, setWatchList] = useState(['GOOGL', 'MSFT', 'AMZN']); to be imported from context as show below 
     const { watchList } = useContext(WatchListContext)
+    const navigate = useNavigate()
 
     //Function to set Chg% to red or green based on it value
     const changeColor = (change) => {
@@ -18,6 +20,11 @@ export const StockList = () => {
     //Function to Icon direction to bullish or bearish
     const renderIcon = (change) => {
         return change > 0 ? <BsCaretUpFill/> : <BsCaretDownFill/>
+    }
+
+    //Funtion fo redirecting to selected stock detail page
+    const handleStockSelect = (symbol) => {
+        navigate(`detail/${symbol}`)
     }
 
     useEffect(() => {
@@ -87,7 +94,7 @@ export const StockList = () => {
                 <tbody>
                     {stock?.map((stockData) => {
                         return (
-                            <tr className="table-row" key={stockData.symbol}>
+                            <tr style={{ cursor: "pointer" }} onClick={() => {handleStockSelect(stockData.symbol)}} className="table-row" key={stockData.symbol}>
                                 <th scope="row">{stockData.symbol}</th>
                                 <td>{stockData.data.c}</td>
                                 <td className={`text-${changeColor(stockData.data.d)}`}>
