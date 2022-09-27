@@ -41,8 +41,8 @@ export const StockChart = ({ chartData, symbol }) => {
 
     return <div className="mt-5 p-4 shadow-sm bg-white">
         <Chart options={options} series={series} type="area" width="100%" />
-        <button/>
-        <button/>
-        <button/>
+        <button onClick={()=> {setDateFormat("24h")}}>24h</button>
+        <button onClick={()=> {setDateFormat("7d")}}>7d</button>
+        <button onClick={()=> {setDateFormat("1y")}}>1y</button>        
     </div>
 }
