@@ -7,8 +7,27 @@ export const StockChart = ({ chartData, symbol }) => {
     //Declaring state to handle time buttons
     const [dateFormat, setDateFormat] = useState("24h")
 
+    //
+    const determineTimeFormat = () => {
+        switch (dateFormat) {
+            case "24h":
+                return day
+            case "7d":
+                return week
+            case "1y":
+                return year
+
+            default:
+                return day;
+        }
+    }
+
+    //Changing color of chart to signify increase/decreas in stock price
+    const color = determineTimeFormat()[determineTimeFormat().length -1].y - determineTimeFormat()[0].y > 0 ? "#26C281" : "#ed3419"
+
     //Declaring the chart variables
     const options = {
+        colors: [color],
         title: {
             text: symbol,
             align: "center",
@@ -35,19 +54,7 @@ export const StockChart = ({ chartData, symbol }) => {
         }
     }
 
-    const determineTimeFormat = () => {
-        switch (dateFormat) {
-            case "24h":
-                return day
-            case "7d":
-                return week
-            case "1y":
-                return year
-
-            default:
-                return day;
-        }
-    }
+    
     const series = [{
         name: symbol,
         data: determineTimeFormat()
