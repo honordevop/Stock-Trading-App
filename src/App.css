@@ -4,3 +4,11 @@
     overflow-x: hidden;
     cursor: pointer;
 }
+
+.delete-button {
+    visibility: hidden;
+}
+
+.table-row:hover .delete-button{
+    visibility:visible;
+}
