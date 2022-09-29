@@ -16,7 +16,7 @@ export const StockData =({ symbol })=>{
                         symbol: symbol
                     }
                 })
-                console.log(response)
+                // console.log(response)
                 if (isMounted) {
                     setStockData(response.data)
                 }

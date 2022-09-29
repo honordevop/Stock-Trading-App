@@ -67,7 +67,7 @@ export const StockDetailPage = () => {
                     })
 
                 ])
-                console.log(responses)
+                // console.log(responses)
 
                 //Function to format data for the chart
                 setChartData({

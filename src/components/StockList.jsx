@@ -52,7 +52,7 @@ export const StockList = () => {
 
                 localStorage.setItem('responses', JSON.stringify(responses))
 
-                console.log(responses)
+                // console.log(responses)
                 // useState(JSON.parse(localStorage.getItem('selectedTeam')) || "TeamB");
                 const data = responses.map((response) => {
                     return {
@@ -60,7 +60,7 @@ export const StockList = () => {
                         symbol: response.config.params.symbol
                     }
                 })
-                console.log(data)
+                // console.log(data)
                 // localStorage.setItem('data', JSON.stringify(data))
                 if (isMounted) {
                     setStock(data)
